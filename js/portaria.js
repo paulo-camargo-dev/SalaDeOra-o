@@ -118,6 +118,7 @@ function removerPessoa(key) {
 
 window.adicionar = function adicionar() {
   const input = document.getElementById("nome");
+  const horarioInput = document.getElementById("horarioInicial");
   const nome = input.value.trim();
   if (!nome) return;
 
@@ -125,7 +126,11 @@ window.adicionar = function adicionar() {
   const futuros = filtrarFuturos([...filaAtual]);
   ordenarFila(futuros);
   const ultimo = futuros[futuros.length - 1];
-  const startAt = ultimo && ultimo.endAt ? ultimo.endAt : agora;
+  let startAt = ultimo && ultimo.endAt ? ultimo.endAt : agora;
+  if (!ultimo && horarioInput && horarioInput.value) {
+    const ms = parseHoraParaMs(horarioInput.value);
+    if (ms) startAt = ms;
+  }
   const endAt = startAt + DURACAO_MINUTOS * 60000;
   const posicao = futuros.length;
 
@@ -140,6 +145,9 @@ window.adicionar = function adicionar() {
   });
 
   input.value = "";
+  if (!ultimo && horarioInput) {
+    horarioInput.value = "";
+  }
   input.focus();
 };
 

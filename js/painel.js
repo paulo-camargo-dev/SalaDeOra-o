@@ -99,7 +99,7 @@ function renderizarPainel() {
   if (lista.length === 0) {
     setFinalizado(true);
     atualizarTexto("agora", "AGORA: periodo de oracao finalizado");
-    atualizarTexto("proximo", "PROXIMO: deus abencoe a todos");
+    atualizarTexto("proximo", "PROXIMO:");
     atualizarTexto("fila", "FILA: -");
     return;
   }

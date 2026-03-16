@@ -172,6 +172,10 @@ color:var(--input-text);
 border:1px solid var(--border);
 }
 
+input[type="time"]{
+margin-top:10px;
+}
+
 button{
 padding:10px;
 font-size:20px;
