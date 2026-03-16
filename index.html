@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Sala de Oracao</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page">
+    <div class="painel">
+      <section class="barra">
+        <div class="titulo">SALA DE ORACAO</div>
+        <div class="relogio" id="relogio"></div>
+        <div class="agora" id="agora"></div>
+        <div class="proximo" id="proximo"></div>
+        <div class="fila" id="fila"></div>
+      </section>
+
+      <section class="container">
+        <h2>Adicionar na fila</h2>
+        <div class="acoes">
+          <button id="btnTema" class="btn-tema" onclick="alternarTema()">Modo claro</button>
+        </div>
+        <input type="text" id="nome" placeholder="Nome">
+        <button onclick="adicionar()">Adicionar</button>
+
+        <h3>Fila Atual</h3>
+        <div class="acoes">
+          <button class="btn-limpar" onclick="limparFila()">Limpar fila</button>
+        </div>
+        <ul id="listaFila"></ul>
+      </section>
+    </div>
+  </div>
+
+  <script type="module" src="js/painel.js"></script>
+  <script type="module" src="js/portaria.js"></script>
+</body>
+</html>

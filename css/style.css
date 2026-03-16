@@ -1,0 +1,284 @@
+:root{
+--page-bg:#000;
+--panel-bg:#000;
+--text:#fff;
+--border:rgba(255,255,255,0.25);
+--button-bg:#000;
+--button-text:#fff;
+--input-bg:#000;
+--input-text:#fff;
+--agora:#00ff00;
+--proximo:#ffff00;
+--glow-1:rgba(255,255,255,0.10);
+--glow-2:rgba(0,255,255,0.10);
+--glow-3:rgba(255,255,0,0.08);
+}
+
+body[data-theme="light"]{
+--page-bg:#f7f7f7;
+--panel-bg:#fff;
+--text:#000;
+--border:rgba(0,0,0,0.2);
+--button-bg:#fff;
+--button-text:#000;
+--input-bg:#fff;
+--input-text:#000;
+--agora:#008a00;
+--proximo:#b58a00;
+--glow-1:rgba(0,0,0,0.08);
+--glow-2:rgba(0,120,120,0.08);
+--glow-3:rgba(180,140,0,0.06);
+}
+
+html, body{
+margin:0;
+height:100%;
+overflow:auto;
+font-family:Arial;
+background:var(--page-bg);
+color:var(--text);
+}
+
+body{
+position:relative;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:-20%;
+background:
+  radial-gradient(600px 300px at 20% 20%, var(--glow-1), transparent 60%),
+  radial-gradient(500px 280px at 80% 30%, var(--glow-2), transparent 60%),
+  radial-gradient(700px 400px at 40% 80%, var(--glow-3), transparent 65%);
+filter: blur(8px);
+animation: fundoVivo 18s ease-in-out infinite;
+z-index:0;
+}
+
+.page{
+position:relative;
+z-index:1;
+display:flex;
+align-items:center;
+justify-content:center;
+min-height:100vh;
+padding:24px;
+box-sizing:border-box;
+}
+
+.painel{
+width:min(980px, 100%);
+background:var(--panel-bg);
+border:1px solid var(--border);
+border-radius:16px;
+padding:24px;
+box-sizing:border-box;
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.bg-oracao{
+background:var(--page-bg);
+background-image:none;
+}
+
+.barra{
+width:100%;
+background:var(--panel-bg);
+border:1px solid var(--border);
+border-radius:12px;
+padding:22px;
+font-size:clamp(20px, 2.6vw, 30px);
+box-sizing:border-box;
+}
+
+.titulo{
+font-weight:bold;
+margin-bottom:5px;
+font-size:clamp(26px, 3.6vw, 38px);
+}
+
+.relogio{
+font-size:clamp(18px, 2.6vw, 26px);
+opacity:0.85;
+margin-bottom:6px;
+}
+
+.agora{
+color:var(--agora);
+font-size:clamp(24px, 3.8vw, 36px);
+}
+
+.proximo{
+color:var(--proximo);
+animation:piscando 2s infinite;
+font-size:clamp(24px, 3.8vw, 36px);
+}
+
+.finalizado .agora,
+.finalizado .proximo{
+color:#fff;
+}
+
+.fila{
+margin-top:5px;
+font-size:clamp(18px, 2.6vw, 26px);
+}
+
+.alerta{
+animation:piscando 1s infinite;
+}
+
+@keyframes piscando{
+
+0%{opacity:1;}
+50%{opacity:0;}
+100%{opacity:1;}
+
+}
+
+@keyframes fundoVivo{
+0%{transform:translate3d(0,0,0) scale(1);}
+50%{transform:translate3d(-4%,2%,0) scale(1.05);}
+100%{transform:translate3d(0,0,0) scale(1);}
+}
+
+.container{
+padding:20px;
+max-width:600px;
+border:1px solid var(--border);
+border-radius:12px;
+background:var(--panel-bg);
+box-sizing:border-box;
+}
+
+h2{
+font-size:clamp(24px, 3.6vw, 34px);
+margin:0 0 12px 0;
+}
+
+h3{
+font-size:clamp(22px, 3.2vw, 30px);
+margin:18px 0 10px 0;
+}
+
+input{
+padding:10px;
+font-size:20px;
+background:var(--input-bg);
+color:var(--input-text);
+border:1px solid var(--border);
+}
+
+button{
+padding:10px;
+font-size:20px;
+margin-left:10px;
+background:var(--button-bg);
+color:var(--button-text);
+border:1px solid var(--border);
+}
+
+ul{
+padding-left:20px;
+}
+
+li{
+margin-bottom:6px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+}
+
+.btn-excluir{
+padding:6px 10px;
+font-size:16px;
+background:#cc3333;
+color:white;
+border:none;
+border-radius:4px;
+cursor:pointer;
+}
+
+.acoes{
+display:flex;
+justify-content:flex-start;
+margin-bottom:10px;
+}
+
+.btn-limpar{
+background:var(--button-bg);
+border:1px solid var(--border);
+}
+
+.btn-tema{
+background:var(--button-bg);
+border:1px solid var(--border);
+}
+
+@media (max-width: 600px){
+  .page{
+    padding:12px;
+  }
+
+  .painel{
+    padding:16px;
+    gap:16px;
+  }
+
+  .relogio{
+    font-size:clamp(22px, 6.5vw, 30px);
+  }
+
+  .fila{
+    font-size:clamp(22px, 6.5vw, 30px);
+  }
+
+  .container{
+    padding:16px;
+    max-width:100%;
+  }
+
+  input, button{
+    width:100%;
+    box-sizing:border-box;
+    font-size:24px;
+  }
+
+  button{
+    margin:10px 0 0 0;
+  }
+
+  .titulo{
+    font-size:clamp(30px, 9vw, 44px);
+  }
+
+  .agora,
+  .proximo{
+    font-size:clamp(26px, 8vw, 38px);
+  }
+
+  h2{
+    font-size:clamp(26px, 8vw, 36px);
+  }
+
+  h3{
+    font-size:clamp(24px, 7vw, 34px);
+  }
+
+  ul{
+    padding-left:16px;
+  }
+
+  li{
+    flex-wrap:wrap;
+  }
+
+  .btn-excluir{
+    margin-top:6px;
+  }
+}
+
